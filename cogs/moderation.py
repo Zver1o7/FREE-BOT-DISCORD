@@ -1,10 +1,4 @@
-"""Модерация: кик, баны, муты, варны, очистка чата, роли, ник.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Модерация: кик, баны, муты, варны, очистка чата, роли, ник."""
 
 import datetime
 from typing import List, Optional
@@ -12,6 +6,7 @@ from typing import List, Optional
 import discord
 from discord.ext import commands, tasks
 
+import utils.attribution as _sig
 import utils.settings as store
 from utils.helpers import (
     COLOR_NEG,
@@ -305,7 +300,7 @@ class ModerationCog(commands.Cog):
             description="\n".join(lines),
             color=COLOR_WARN,
         )
-        embed.set_footer(text=f"Всего предупреждений: {len(entries)}")
+        embed.set_footer(text=f"Всего предупреждений: {len(entries)} • {_sig.tag()}")
         await ctx.send(embed=embed)
     warnings.category = "Модерация"
 

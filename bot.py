@@ -1,15 +1,10 @@
 """Discord-бот администрирования (discord.py 2.x).
 
-By @Zver1o7 — https://github.com/Zver1o7
-
 Запуск:
     python bot.py
 
 Токен берётся из переменной окружения DISCORD_TOKEN или из config.json.
 """
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
 
 import json
 import logging
@@ -21,7 +16,11 @@ import discord
 import discord.errors
 from discord.ext import commands
 
+import utils.attribution as _sig
 import utils.settings as settings_store
+
+__author__ = _sig.handle()
+__github__ = _sig.url()
 
 log = logging.getLogger("adminbot")
 logging.basicConfig(
@@ -96,6 +95,8 @@ class AdminBot(commands.Bot):
         self._config = config
 
     async def setup_hook(self) -> None:
+        _sig.verify()
+        log.info("Подпись сборки: %s (%s)", _sig.handle(), _sig.url())
         for extension in EXTENSIONS:
             try:
                 await self.load_extension(extension)

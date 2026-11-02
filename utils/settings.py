@@ -1,12 +1,12 @@
 """Настройки и данные бота (JSON-файлы в папке data/).
 
-By @Zver1o7 — https://github.com/Zver1o7
-
 Все функции потокобезопасны (один замок) и безопасны к отсутствию файлов.
 """
 
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+import utils.attribution as _sig
+
+__author__ = _sig.handle()
+__github__ = _sig.url()
 
 import datetime
 import json

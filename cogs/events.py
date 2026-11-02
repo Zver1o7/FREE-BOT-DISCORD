@@ -1,10 +1,4 @@
-"""Логи: удалённые и изменённые сообщения, входы/выходы, баны, смена ников.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Логи: удалённые и изменённые сообщения, входы/выходы, баны, смена ников."""
 
 import time
 from typing import Optional

@@ -1,10 +1,4 @@
-"""Общие утилиты: разбор времени, иерархия, эмбеды и отправка в лог-канал.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Общие утилиты: разбор времени, иерархия, эмбеды и отправка в лог-канал."""
 
 import datetime
 import re
@@ -13,7 +7,11 @@ from typing import Optional
 import discord
 import discord.ext.commands
 
+import utils.attribution as _sig
 import utils.settings as store
+
+__author__ = _sig.handle()
+__github__ = _sig.url()
 
 COLOR_NEG = 0xED4245      # красный — баны, кик
 COLOR_WARN = 0xFEE75C     # жёлтый — варны, автомодерация
@@ -76,7 +74,9 @@ def clip(text: Optional[str], limit: int = 1024) -> str:
 # ------------------------------------------------------------------- эмбеды
 
 def mk_embed(title: Optional[str] = None, description: Optional[str] = None, color: int = COLOR_NEUTRAL) -> discord.Embed:
-    return discord.Embed(title=title, description=description, color=color)
+    embed = discord.Embed(title=title, description=description, color=color)
+    embed.set_footer(text=_sig.tag())
+    return embed
 
 
 async def send_log(guild: discord.Guild, embed: discord.Embed) -> None:

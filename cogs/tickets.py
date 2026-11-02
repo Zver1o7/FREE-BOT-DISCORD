@@ -1,10 +1,4 @@
-"""Тикеты: приватный тред на запрос пользователя.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Тикеты: приватный тред на запрос пользователя."""
 
 import discord
 from discord.ext import commands

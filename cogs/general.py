@@ -1,16 +1,11 @@
-"""Информация: help, ping, serverinfo, userinfo, avatar, ссылка-приглашение.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Информация: help, ping, serverinfo, userinfo, avatar, ссылка-приглашение."""
 
 from typing import Optional
 
 import discord
 from discord.ext import commands
 
+import utils.attribution as _sig
 import utils.settings as store
 from utils.helpers import COLOR_NEUTRAL, mk_embed
 
@@ -64,7 +59,7 @@ class GeneralCog(commands.Cog):
                 for cmd in items
             ]
             embed.add_field(name=category, value="\n".join(lines), inline=False)
-        embed.set_footer(text="By @Zver1o7 • https://github.com/Zver1o7")
+        embed.set_footer(text=_sig.tag())
         await ctx.send(embed=embed)
     help_command.category = "Сервер"
 

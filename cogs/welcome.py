@@ -1,10 +1,4 @@
-"""Приветствия, прощания и авто-роль.
-
-By @Zver1o7 — https://github.com/Zver1o7
-"""
-
-__author__ = "@Zver1o7"
-__github__ = "https://github.com/Zver1o7"
+"""Приветствия, прощания и авто-роль."""
 
 import discord
 from discord.ext import commands
