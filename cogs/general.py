@@ -7,6 +7,7 @@ from discord.ext import commands
 
 import utils.attribution as _sig
 import utils.settings as store
+from utils import __version__ as BOT_VERSION
 from utils.helpers import COLOR_NEUTRAL, mk_embed
 
 
@@ -32,7 +33,7 @@ class GeneralCog(commands.Cog):
             category = getattr(command, "category", "Прочее")
             groups.setdefault(category, []).append(command)
 
-        order = ["Модерация", "Автомодерация", "Щит", "Настройки", "Сервер", "Тикеты"]
+        order = ["Модерация", "Автомодерация", "Щит", "Розыгрыши", "Настройки", "Сервер", "Тикеты"]
         embed = mk_embed(
             "📖 Команды бота",
             description=(
@@ -81,6 +82,20 @@ class GeneralCog(commands.Cog):
         embed = mk_embed("🔗 Добавить бота", description=f"[Клик — и бот на сервере]({url})")
         await ctx.send(embed=embed)
     invite.category = "Сервер"
+
+    @commands.hybrid_command(name="about", description="О боте: версия и автор")
+    async def about(self, ctx: commands.Context) -> None:
+        embed = mk_embed(
+            "🤖 О боте",
+            description=(
+                f"**Discord Admin Bot v{BOT_VERSION}**\n"
+                "Модерация, автомодерация, щит сервера, логи, приветствия, тикеты."
+            ),
+        )
+        embed.add_field(name="Автор", value=f"{_sig.handle()} ({_sig.url()})", inline=False)
+        embed.add_field(name="Что нового", value="Полная история — в файле CHANGELOG.md.", inline=False)
+        await ctx.send(embed=embed)
+    about.category = "Сервер"
 
     @commands.hybrid_command(name="serverinfo", description="Информация о сервере")
     @commands.guild_only()

@@ -18,6 +18,7 @@ from discord.ext import commands
 
 import utils.attribution as _sig
 import utils.settings as settings_store
+from utils import __version__
 
 __author__ = _sig.handle()
 __github__ = _sig.url()
@@ -40,6 +41,7 @@ EXTENSIONS = (
     "cogs.config",
     "cogs.tickets",
     "cogs.shield",
+    "cogs.giveaway",
 )
 
 
@@ -97,6 +99,7 @@ class AdminBot(commands.Bot):
 
     async def setup_hook(self) -> None:
         _sig.verify()
+        log.info("Discord Admin Bot v%s", __version__)
         log.info("Подпись сборки: %s (%s)", _sig.handle(), _sig.url())
         for extension in EXTENSIONS:
             try:

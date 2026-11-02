@@ -192,6 +192,11 @@ class ShieldCog(commands.Cog):
         top_lines = [f"<@{user_id}> — {count}" for user_id, count in top] or ["—"]
 
         tempbans = [entry for entry in store.get_tempbans() if int(entry.get("guild_id", 0)) == guild.id]
+        active_giveaways = [
+            entry
+            for entry in store.get_giveaways()
+            if not entry.get("ended") and int(entry.get("guild_id", 0)) == guild.id
+        ]
         newcomers = sum(
             1
             for member in guild.members
@@ -220,6 +225,7 @@ class ShieldCog(commands.Cog):
         embed.add_field(name="Варнов всего", value=str(total_warns), inline=True)
         embed.add_field(name="Топ нарушителей", value="\n".join(top_lines), inline=False)
         embed.add_field(name="Активных темпбанов", value=str(len(tempbans)), inline=True)
+        embed.add_field(name="Активных розыгрышей", value=str(len(active_giveaways)), inline=True)
         embed.add_field(name="Автомодерация", value=", ".join(enabled_filters) or "выключена", inline=True)
         embed.add_field(
             name="Щит",

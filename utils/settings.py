@@ -173,3 +173,17 @@ def get_tempbans() -> List[dict]:
 
 def set_tempbans(bans: List[dict]) -> None:
     _write_json(TEMPBANS_FILE, bans)
+
+
+# ------------------------------------------------------------- розыгрыши
+
+GIVEAWAYS_FILE = os.path.join(DATA_DIR, "giveaways.json")
+
+
+def get_giveaways() -> List[dict]:
+    data = _read_json(GIVEAWAYS_FILE, [])
+    return data if isinstance(data, list) else []
+
+
+def set_giveaways(giveaways: List[dict]) -> None:
+    _write_json(GIVEAWAYS_FILE, giveaways)
