@@ -32,7 +32,7 @@ class GeneralCog(commands.Cog):
             category = getattr(command, "category", "Прочее")
             groups.setdefault(category, []).append(command)
 
-        order = ["Модерация", "Автомодерация", "Настройки", "Сервер", "Тикеты"]
+        order = ["Модерация", "Автомодерация", "Щит", "Настройки", "Сервер", "Тикеты"]
         embed = mk_embed(
             "📖 Команды бота",
             description=(

@@ -57,6 +57,12 @@ class ConfigCog(commands.Cog):
             f"упоминания: {_on_off(automod.get('mention_spam'))}",
             f"· слова: {_on_off(automod.get('bad_words'))} (в базе {len(automod.get('badwords') or [])})",
             f"· исключённые каналы: {len(automod.get('ignored_channels') or [])}",
+            "",
+            "**Щит сервера**",
+            f"· Верификация: {_role_text(ctx.guild, settings['verify'].get('role_id'))} "
+            f"(канал: {_channel_text(ctx.guild, settings['verify'].get('channel_id'))})",
+            f"· Антирейд: {_on_off(settings['antiraid'].get('enabled'))} "
+            f"(мин. возраст: {settings['antiraid'].get('min_age_days', 0)} дн)",
         ]
         await ctx.send(embed=mk_embed("⚙️ Настройки", description="\n".join(lines), color=COLOR_NEUTRAL))
     config.category = "Настройки"

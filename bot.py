@@ -39,6 +39,7 @@ EXTENSIONS = (
     "cogs.welcome",
     "cogs.config",
     "cogs.tickets",
+    "cogs.shield",
 )
 
 

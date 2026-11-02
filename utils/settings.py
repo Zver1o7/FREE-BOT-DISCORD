@@ -31,6 +31,8 @@ DEFAULT_SETTINGS: Dict[str, Any] = {
     "log_channel_id": None,
     "warn_limit": 5,
     "autorole_id": None,
+    "verify": {"channel_id": None, "role_id": None, "message_id": None},
+    "antiraid": {"enabled": False, "min_age_days": 7},
     "welcome": {
         "channel_id": None,
         "message": "👋 Добро пожаловать на **{server}**, {user}! Ты {count}-й участник сервера.",
@@ -111,6 +113,13 @@ def get_user_warnings(guild_id: int, user_id: int) -> List[dict]:
         return []
     entries = guild_map.get(str(user_id))
     return entries if isinstance(entries, list) else []
+
+
+def get_all_warnings(guild_id: int) -> dict:
+    """Вся карта варнов сервера: user_id -> [записи]."""
+    data = _read_json(WARNINGS_FILE, {})
+    guild_map = data.get(str(guild_id))
+    return guild_map if isinstance(guild_map, dict) else {}
 
 
 def add_warning(guild_id: int, user_id: int, moderator: str, moderator_id: int, reason: str) -> int:
