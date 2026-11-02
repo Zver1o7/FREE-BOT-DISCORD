@@ -1,0 +1,2 @@
+# Discord Admin Bot — By @Zver1o7 (https://github.com/Zver1o7)
+discord.py>=2.4.0,<3
